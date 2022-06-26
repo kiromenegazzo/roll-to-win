@@ -24,10 +24,10 @@ export const PlayerCard = ({ name, score, imageUrl, onClick, disabled, active })
 );
 
 PlayerCard.propTypes = {
+  imageUrl: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  imageUrl: PropTypes.string,
-  name: PropTypes.string,
-  score: PropTypes.number,
   onClick: PropTypes.func,
 };

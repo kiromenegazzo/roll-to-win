@@ -7,6 +7,7 @@ module.exports = {
     es6: true,
     node: true,
     browser: true,
+    jest: true,
   },
 
   settings: {
@@ -62,7 +63,6 @@ module.exports = {
     'quote-props': [ERROR, 'consistent'],
     'no-alert': ERROR,
     'import/extensions': [ERROR, { 'js': 'never', 'less': 'always' }],
-    // ++ только для for-цикла
     'no-plusplus': [ERROR, { 'allowForLoopAfterthoughts': true }],
     'camelcase': [ERROR, {
       allow: [

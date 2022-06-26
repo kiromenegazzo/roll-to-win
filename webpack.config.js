@@ -36,6 +36,7 @@ module.exports = {
     extensions: ['.jsx', '.js'],
   },
   devServer: {
+    open: true,
     proxy: {
       '/api/game': 'http://localhost:8000',
     },

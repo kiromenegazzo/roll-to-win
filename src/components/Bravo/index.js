@@ -1,1 +1,1 @@
-export {Bravo} from './Bravo'
+export { Bravo } from './Bravo';

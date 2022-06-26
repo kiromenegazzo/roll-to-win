@@ -37,10 +37,12 @@ export const Game = () => {
     const newScore = score + randomInteger;
 
     if (newScore >= scoreToWin) {
-      const { payload, error: responseError } = await controller.endGame({ gameId: matchId, winnerId: playerId });
+      const response = await controller.endGame({ gameId: matchId, winnerId: playerId });
+
+      const { payload, error: responseError } = response;
 
       setError(responseError);
-      setEnd(payload.success);
+      setEnd(payload?.success);
     } else {
       const nextPlayer = players[currentPlayerIndex === players.length - 1 ? 0 : currentPlayerIndex + 1];
 
@@ -49,8 +51,10 @@ export const Game = () => {
 
     setData((prev) => ({
       ...prev,
-      players: prev.players.map((player, index) => (
-        index === currentPlayerIndex ? { ...player, score: newScore } : player
+      players: prev.players.map((player) => (
+        player.entity.id === currentId
+          ? { ...player, score: newScore }
+          : player
       )),
     }));
   };
@@ -65,7 +69,7 @@ export const Game = () => {
 
     return (
       <Bravo onClick={handleReplay}>
-        <PlayerCard disabled {...entity} score={score} />
+        <PlayerCard {...entity} disabled score={score} />
       </Bravo>
     );
   };
